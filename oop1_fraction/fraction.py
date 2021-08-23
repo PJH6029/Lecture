@@ -15,7 +15,9 @@ class Fraction:
 
         # 생성자
         # TODO 분자, 분모를 받아서 멤버 변수에 저장. 기약분수로도 만들어 줘야겠지??
-        pass
+        self.num = num
+        self.denom = denom
+        self.reduce()
 
     def reduce(self):
         # input: x
@@ -23,7 +25,9 @@ class Fraction:
 
         # 분수를 기약분수로 만들어주는 함수
         # TODO 기약분수를 어떻게 만들까요? Hint: 기약분수 = 분자 분모가 서로소인 분수
-        pass
+        gcd = self.get_gcd(self.num, self.denom)
+        self.num = self.num // gcd
+        self.denom = self.denom // gcd
 
     def is_zero(self):
         # input: x
@@ -31,7 +35,7 @@ class Fraction:
 
         # 분수의 값이 0인지 return (boolean type)
         # TODO 적절히 바꿔서 True or False를 return 하도록
-        return False
+        return self.num == 0
 
     def to_string(self):
         # input: x
@@ -58,3 +62,10 @@ class Fraction:
             a = b
             b = tmp
         return a
+
+if __name__ == '__main__':
+    a = Fraction(1, 2)
+    print(a.num)
+    print(a.to_string())
+    print(a.to_decimals())
+    print(a.is_zero())
